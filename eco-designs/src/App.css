@@ -36,3 +36,37 @@
     transform: rotate(360deg);
   }
 }
+
+.designCardContainer{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  margin: unset;
+}
+
+.designCard {
+  transition: 0.3s;
+  width: 50%;
+  padding: 10pix;
+  margin: 10pix;
+  text-align: center;
+  /* display: inline; */
+  flex: 0 0 33.333333%;
+  text-decoration-color: blue;
+}
+
+.mainImage {
+  height: auto; 
+  width: auto; 
+  max-width: 300px; 
+  max-height: 300px;
+  border-radius: 30px;
+}
+
+.profileImg{
+  height: auto; 
+  width: auto; 
+  max-width: 300px; 
+  max-height: 300px;
+  border-radius: 30px;
+}
