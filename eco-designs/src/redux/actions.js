@@ -46,7 +46,8 @@
         method: "DELETE"
       })
         .then(resp => resp.json())
-        .then(payload => dispatch({ type: "DELETE_DESIGN", payload }))
+        .then(user => dispatch({ type: "DELETE_DESIGN", payload: userId, designId }))
+        // dispatch({ type: "DELETE_DESIGN", payload })
         .catch(console.log)
     }
   }

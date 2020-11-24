@@ -7,7 +7,7 @@ import { deleteDesignAction } from '../redux/actions'
 class UserDesigns extends React.Component{
 
 
-
+    
     localDeleteHandler =(e)=>{
         this.props.deleteHandler(this.props.user.id, this.props.design.id)
     }

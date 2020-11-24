@@ -21,10 +21,10 @@ function designReducer(state = defaultState.designs, action){
             // const design = {designs: action.payload};
             return state.concat([ action.newDesign ]);
 
-        case "DELETE_DESIGN":
-            console.log("Deleting Design",  action.payload);
-            const designs = state.filter(design => design.id !== action.payload.id)
-            return {...state, designs}
+        // case "DELETE_DESIGN":
+        //     console.log("Deleting Design",  action.payload);
+        //     return state.filter(design => design.id !== action.payload.id)
+            // return {...state, designs}
 
         case "ADD_COMMENT":
             console.log("Adding Comment!", action.payload);
@@ -54,6 +54,22 @@ function userReducer(state = defaultState.users, action){
             console.log("Deleting User:", action)
             const users = state.filter(user => user.id !== action.id)
             return [...state, users]
+
+        case "DELETE_DESIGN":
+            console.log("Deleting Design", action.payload, action.designId);
+            let user = state.find(user => user.id === action.payload)
+            // .filter(user => user.designs.id !== action.payload.id)
+            let newdesigns = user.designs.filter(design => design.id !== action.designId)
+            return console.log(user, newdesigns)
+            // {
+            //     ...state,
+            //     user: {
+            //         ...state.user,
+            //         designs: [...state.user.designs, newdesigns]
+            //         }
+            //     }
+            
+            // return console.log(design)
     
         case "EDIT_USER":
             console.log("Editing user!", action.payload)
