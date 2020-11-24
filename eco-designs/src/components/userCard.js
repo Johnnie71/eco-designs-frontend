@@ -7,14 +7,14 @@ class UserCard extends React.Component{
    
 
     render(){
-        console.log(this.props.user.designs)
+        // console.log(this.props.user.designs)
 
         let { username,  profile_pic} = this.props.user
         return(
-            <div>
-                    <img className="profileImg" src={profile_pic} alt="profileimg"/>
+            <div className="usercard">
                     <NavLink to={`/users/${this.props.user.id}`} >
-                    <h1>{username}</h1>
+                        <img className="profileImg" src={profile_pic} alt="profileimg" />
+                        <h1>{username}</h1>
                     </NavLink>
             </div>
         )

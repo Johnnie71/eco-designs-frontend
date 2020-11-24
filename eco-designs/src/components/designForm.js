@@ -64,7 +64,7 @@ function mapDispatchToProps(dispatch){
     return { 
         submitHandler: (id, newDesign) => dispatch(addDesignAction(id, newDesign)),
         // deleteHandler: (id) => dispatch(deleteUserAction(id))
-    }
+    } 
 }
 
 export default connect(null, mapDispatchToProps)(DesignForm)

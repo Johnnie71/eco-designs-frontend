@@ -29,12 +29,12 @@ class SignUp extends React.Component{
     render(){
 
         return(
-            <div>
+            <div className="form">
                 <form onSubmit={this.localsubmitHandler}>
                     <input name="name" type="text" placeholder="name" value={this.state.name} onChange={this.changeHandler} />
                     <input name="username" type="text" placeholder="username" value={this.state.username} onChange={this.changeHandler} />
                     <input name="profile_pic" type="text" placeholder="Profile Pic" value={this.state.profile_pic} onChange={this.changeHandler} />
-                    <input name="password_digest" type="text" placeholder="password" value={this.state.password_digest} onChange={this.changeHandler} />
+                    <input name="password_digest" type="password" placeholder="password" value={this.state.password_digest} onChange={this.changeHandler} />
                     <button type="submit">Sign Up!</button>
                 </form>
                 <h4>Already have an account?</h4>

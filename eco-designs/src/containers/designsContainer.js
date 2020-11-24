@@ -10,6 +10,7 @@ class DesignsContainer extends React.Component {
 
 
     renderDesigns = () =>{
+        console.log(this.props.designs)
         return this.props.designs.map(des => <DesignCard key={des.id} design={des} />)
     }
 
@@ -18,7 +19,7 @@ class DesignsContainer extends React.Component {
         console.log(this.props.designs)
        return(
            <div>
-           <h1>DesignsContainer</h1>
+           <h1>Designs</h1>
            <Switch>
            <Route path="/designs/:id" render={(routerProps) => {
                          let id = parseInt(routerProps.match.params.id)

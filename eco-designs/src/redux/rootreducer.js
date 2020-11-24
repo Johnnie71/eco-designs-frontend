@@ -1,5 +1,7 @@
 // hold our combined reducers as well as reducer functions
 
+
+
 import { combineReducers } from 'redux'
 
 const defaultState ={
@@ -8,19 +10,29 @@ const defaultState ={
 }
 
 function designReducer(state = defaultState.designs, action){
+
     switch (action.type){
         case "FETCH_DESIGNS":
             console.log("Getting designs!", action)
             return action.payload;
 
         case "ADD_DESIGN":
-            console.log("Adding Design!", action)
+            console.log("Adding Design!", state, action.newDesign)
+            // const design = {designs: action.payload};
+            return state.concat([ action.newDesign ]);
 
         case "DELETE_DESIGN":
-            console.log("Deleting Design", action)
+            console.log("Deleting Design",  action.payload);
+            const designs = state.filter(design => design.id !== action.payload.id)
+            return {...state, designs}
 
         case "ADD_COMMENT":
-            console.log("Adding Comment!", action)
+            console.log("Adding Comment!", action.payload);
+            return state
+
+        case "DELETE_COMMENT":
+            console.log("Deleting Comment", action.payload);
+            return state
 
         default:
             return state
@@ -45,9 +57,13 @@ function userReducer(state = defaultState.users, action){
     
         case "EDIT_USER":
             console.log("Editing user!", action.payload)
+            return state.map((user) => user.id === action.payload.id)
             // let newArray = [...state]
             // let foundUser = newArray.find(el => el.id === action.payload.id)
             // newArray[newArray.indexOf(foundUser)]
+            // return {
+            //     ...state, state: [...state, action.payload]
+            // }
             // return state.map((user, index) => {
                 // Find the item with the matching id
                 // if(user.id === action.payload.id) {

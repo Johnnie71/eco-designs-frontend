@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 import React from 'react';
 import './App.css';
-import Header from './components/header'
+// import Header from './components/header'
 import DesignsContainer from './containers/designsContainer'
 import { connect } from 'react-redux'
 import { fetchDesignsAction, fetchUsersAction} from './redux/actions'
@@ -22,7 +22,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <NavBar />
-        <Header />
+        {/* <Header /> */}
         <Switch>
             <Route path="/signup" render={() => <SignUp />} />
             <Route path="/login" render={() => <Login />} />

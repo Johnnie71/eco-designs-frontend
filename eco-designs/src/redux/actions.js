@@ -31,9 +31,10 @@
         body: JSON.stringify(newDesign)
       })
         .then(resp => resp.json())
-        .then(payload => dispatch({ type: "ADD_DESIGN", payload }))
+        // .then(newDesign => dispatch({ type: "ADD_DESIGN", payload: newDesign }))
         .catch(console.log)
-    }
+        dispatch({type: "ADD_DESIGN", newDesign})
+      }
   }
 
   export function deleteDesignAction(userId, designId){
@@ -65,6 +66,20 @@
       })
         .then(resp => resp.json())
         .then(payload => dispatch({ type: "ADD_COMMENT", payload }))
+        .catch(console.log)
+    }
+  }
+
+  export function deleteDesignComment(commentId){
+
+    return function(dispatch){
+      console.log("Deleted Comment ID:", commentId)
+
+      fetch(`http://localhost:4000/api/v1/comments/${commentId}`, {
+        method: "DELETE"
+      })
+        .then(resp => resp.json())
+        .then(payload => dispatch({ type: "DELETE_COMMENT", payload }))
         .catch(console.log)
     }
   }

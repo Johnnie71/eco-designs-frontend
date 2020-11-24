@@ -6,8 +6,6 @@ class NavBar extends React.Component{
     render(){
         return(
             <nav className="navbaritems">
-                <h4 className="navbar-logo">-</h4>
-                <div className="menu-icons">-</div>
                 <h1 className="npbp">Eco Designs</h1>
                 <ul>
                     {MenuItems.map((item, index) => {

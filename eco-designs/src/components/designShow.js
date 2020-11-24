@@ -33,22 +33,37 @@ class DesignShow extends React.Component{
         let { main_img, title, img_1, img_2, img_3, img_4, img_5, img_6, description, category, user } = this.props.design
         console.log(this.state.comment)
         return(
-            <div className="designCard">
+            <div className="designshow">
+                <div className="mainimagecontainer">
                 <img className="mainImage" src={main_img} alt="mainImg" />
+                </div>
             <h4>{title}</h4>
+            <h3>Designer:</h3>
             <NavLink to={`/users/${this.props.design.user.id}`} >
-                <h4>{user.name}</h4>
+                <h4>{user.username}</h4>
             </NavLink>
+            <h3>Description:</h3>
             <h3>{description}</h3>
+            <h3>Category:</h3>
             <h4>{category}</h4>
             <div className="designCardContainer">
-                <div className="designCard">
-                    <img className="mainImage" src={img_1} alt="mainImg" />
-                    <img className="mainImage" src={img_2} alt="mainImg" />
-                    <img className="mainImage" src={img_3} alt="mainImg" />
-                    <img className="mainImage" src={img_4} alt="mainImg" />
-                    <img className="mainImage" src={img_5} alt="mainImg" />
-                    <img className="mainImage" src={img_6} alt="mainImg" />
+                <div className="gallery">
+                    <img className="altImage" src={img_1} alt="mainImg" />
+                </div>
+                <div className="gallery">
+                    <img className="altImage" src={img_2} alt="mainImg" />
+                </div>
+                <div className="gallery">
+                    <img className="altImage" src={img_3} alt="mainImg" />
+                </div>
+                <div className="gallery">
+                    <img className="altImage" src={img_4} alt="mainImg" />
+                </div>
+                <div className="gallery">
+                    <img className="altImage" src={img_5} alt="mainImg" />
+                </div>
+                <div className="gallery">
+                    <img className="altImage" src={img_6} alt="mainImg" />
                 </div>
             </div>
             <h1>Comments</h1>

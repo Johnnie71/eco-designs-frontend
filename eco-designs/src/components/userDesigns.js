@@ -15,7 +15,7 @@ class UserDesigns extends React.Component{
 
     render(){
         let { title, main_img } = this.props.design
-        console.log(this.props.user.id, this.props.design.id)
+        // console.log(this.props.user.id, this.props.design.id)
         return(
             <div>  
                  <div className="designCard">
@@ -27,7 +27,7 @@ class UserDesigns extends React.Component{
                     <button onClick={this.localDeleteHandler}>X</button>
             </div>
         )
-    }
+    } 
 }
 
 function mapDispatchToProps(dispatch){

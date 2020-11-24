@@ -2,6 +2,7 @@ import React from 'react'
 import UserDesigns from './userDesigns'
 import EditProfile from './editProfile'
 import DesignForm from './designForm'
+import { connect } from 'react-redux'
 
 // import { deleteUserAction } from '../redux/actions'
 
@@ -18,6 +19,7 @@ class UserShow extends React.Component{
     }
 
     userDesigns = () =>{
+        // console.log(this.props.user.designs)
         return this.props.user.designs.map(design => <UserDesigns key={design.id} design={design} user={this.props.user} />)
     }
 
@@ -44,14 +46,18 @@ class UserShow extends React.Component{
     // }
 
     render(){
-
+        console.log(this.props.user.designs)
+        console.log(this.props.user)
         let { name, bio, profile_pic} = this.props.user
         return(
             <div>
                 <h1>User Card</h1>
                     <h1>{name}</h1>
+                    <strong>Bio:</strong>
                     <h4>{bio}</h4>
+                 <div className="usercard">
                     <img className="profileImg" src={profile_pic} alt="profileimg"/>
+                 </div>
                     {this.state.clicked ? <button onClick={this.clickHandler}>Done</button> : <button onClick={this.clickHandler}>Edit Profile</button>}
                     {this.state.designClicked ? <button onClick={this.designClickHandler}>Done</button> : <button onClick={this.designClickHandler}>Add Design</button>}
                     {this.state.clicked ? <EditProfile user={this.props.user} /> : null }
@@ -66,6 +72,8 @@ class UserShow extends React.Component{
     }
 }
 
+function mapStateToProps(state){
+    return {designs: state.designs}
+}
 
-
-export default UserShow
+export default connect(mapStateToProps)(UserShow)
