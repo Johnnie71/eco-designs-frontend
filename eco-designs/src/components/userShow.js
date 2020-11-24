@@ -19,8 +19,11 @@ class UserShow extends React.Component{
     }
 
     userDesigns = () =>{
-        // console.log(this.props.user.designs)
-        return this.props.user.designs.map(design => <UserDesigns key={design.id} design={design} user={this.props.user} />)
+        let userdesigns = this.props.designs.filter(design => design.user.id === this.props.user.id)
+        // console.log(userdesigns)
+        // return this.props.user.designs.map(design => <UserDesigns key={design.id} design={design} user={this.props.user} />)
+        return userdesigns.map(design => <UserDesigns key={design.id} design={design} user={this.props.user} />)
+    
     }
 
     clickHandler = (e) =>{
@@ -41,12 +44,8 @@ class UserShow extends React.Component{
         this.props.submitHandler(this.props.user.id, this.state.name, this.state.username, this.state.profile_pic, this.state.bio, this.state.password_digest)
     }
 
-    // localDeleteHandler = (e) =>{
-
-    // }
 
     render(){
-        console.log(this.props.user.designs)
         console.log(this.props.user)
         let { name, bio, profile_pic} = this.props.user
         return(

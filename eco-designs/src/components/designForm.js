@@ -29,7 +29,7 @@ class DesignForm extends React.Component{
 
     localsubmitHandler = (e) =>{
         e.preventDefault()
-        this.props.submitHandler(this.props.user.id, this.state)
+        this.props.submitHandler(this.state)
     }
 
     // localDeleteHandler = (e) => {
@@ -62,7 +62,7 @@ class DesignForm extends React.Component{
 function mapDispatchToProps(dispatch){
 
     return { 
-        submitHandler: (id, newDesign) => dispatch(addDesignAction(id, newDesign)),
+        submitHandler: ( newDesign ) => dispatch(addDesignAction( newDesign )),
         // deleteHandler: (id) => dispatch(deleteUserAction(id))
     } 
 }

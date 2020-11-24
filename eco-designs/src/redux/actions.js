@@ -17,12 +17,12 @@
     }
   }
 
-  export function addDesignAction(userId, newDesign){
+  export function addDesignAction(newDesign){
 
     return function(dispatch){
-      console.log("New Design Info!:", userId, newDesign.title)
+      console.log("New Design Info!:", newDesign)
 
-      fetch(`http://localhost:4000/api/v1/users/${userId}/designs`, {
+      fetch(`http://localhost:4000/api/v1/designs/`, {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -31,22 +31,22 @@
         body: JSON.stringify(newDesign)
       })
         .then(resp => resp.json())
-        // .then(newDesign => dispatch({ type: "ADD_DESIGN", payload: newDesign }))
+        .then(design => dispatch({ type: "ADD_DESIGN", payload: design }))
         .catch(console.log)
-        dispatch({type: "ADD_DESIGN", newDesign})
+        // dispatch({ type: "ADD_DESIGN", newDesign })
       }
   }
 
-  export function deleteDesignAction(userId, designId){
+  export function deleteDesignAction(designId){
 
     return function(dispatch){
-      console.log("Deleted Design Info!:", userId, designId)
+      console.log("Deleted Design ID!:", designId)
 
-      fetch(`http://localhost:4000/api/v1/users/${userId}/designs/${designId}`, {
+      fetch(`http://localhost:4000/api/v1/designs/${designId}`, {
         method: "DELETE"
       })
         .then(resp => resp.json())
-        .then(user => dispatch({ type: "DELETE_DESIGN", payload: userId, designId }))
+        .then(design => dispatch({ type: "DELETE_DESIGN", payload: designId }))
         // dispatch({ type: "DELETE_DESIGN", payload })
         .catch(console.log)
     }
