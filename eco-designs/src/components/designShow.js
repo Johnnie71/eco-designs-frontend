@@ -6,13 +6,18 @@ import { addDesignComment } from '../redux/actions'
 
 class DesignShow extends React.Component{
 
-    state= {
+    state = {
+        user_id: 9, 
+        design_id: this.props.design.id,
         clicked: false,
-        comment: ""
+        comment: "",
     }
 
-    renderComments = () =>{
-        return this.props.design.comments.map(comment => <CommentCard key={comment.id} comment={comment} />)
+    renderComments = () => {
+        //filters out the comments based on which design its under
+        let designComments = this.props.comments.filter(comment => comment.design_id === this.props.design.id )
+        console.log(designComments)
+        return designComments.map(comment => <CommentCard key={comment.id} comment={comment} />)
     }
 
     changeHandler = (e) =>{
@@ -23,7 +28,7 @@ class DesignShow extends React.Component{
 
     localSubmitHandler = (e) =>{
         e.preventDefault()
-        this.props.submitHandler(this.props.design.id, this.state.comment)
+        this.props.submitHandler(this.state.user_id, this.state.design_id, this.state.comment)
     }
 
 
@@ -31,7 +36,7 @@ class DesignShow extends React.Component{
     render(){
 
         let { main_img, title, img_1, img_2, img_3, img_4, img_5, img_6, description, category, user } = this.props.design
-        console.log(this.state.comment)
+        // console.log(this.state.comment)
         return(
             <div className="designshow">
                 <div className="mainimagecontainer">
@@ -78,7 +83,11 @@ class DesignShow extends React.Component{
 }
 
 function mapDispatchToProps(dispatch){
-    return { submitHandler: (designId, comment) => dispatch(addDesignComment(designId, comment)) }
+    return { submitHandler: (userId, designId, comment) => dispatch(addDesignComment(userId, designId, comment)) }
 }
 
-export default connect(null, mapDispatchToProps)(DesignShow)
+function mapStateToProps(state){
+    return {comments: state.comments}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DesignShow)

@@ -2,7 +2,7 @@
   // function that returns an action
 
 
-  ///////////////////////Designs Functions/////////////////////////
+  ///////////////////////Designs Actions/////////////////////////
   export function fetchDesignsAction(){
       
     return function(dispatch){
@@ -52,7 +52,24 @@
     }
   }
 
-  export function addDesignComment(designId, userComment){
+
+  ////////////////////Comments Actions///////////////////////
+
+  export function fetchCommentsAction(){
+      
+    return function(dispatch){
+
+       //thunk retains access to dispatch and passes it to the inner function
+        fetch('http://localhost:4000/api/v1/comments/')
+        .then(resp => resp.json())
+        //must have access to dispatch
+        //invoke dispatch with an object as an action
+        .then(data => dispatch({ type: "FETCH_COMMENTS", payload: data }))
+        .catch(console.log)
+    }
+  }
+
+  export function addDesignComment(userId, designId, userComment){
 
     return function(dispatch){
       console.log("New Comment!:", userComment)
@@ -63,7 +80,7 @@
           "content-type": "application/json",
           "accepts": "application/json"
         },
-        body: JSON.stringify({ user_id: 9, design_id: designId, comment: userComment })
+        body: JSON.stringify({ user_id: userId, design_id: designId, comment: userComment })
       })
         .then(resp => resp.json())
         .then(payload => dispatch({ type: "ADD_COMMENT", payload }))
@@ -80,12 +97,12 @@
         method: "DELETE"
       })
         .then(resp => resp.json())
-        .then(payload => dispatch({ type: "DELETE_COMMENT", payload }))
+        .then(comment => dispatch({ type: "DELETE_COMMENT", payload: commentId }))
         .catch(console.log)
     }
   }
 
-  //////////////////////Users Action Functions//////////////////////
+  //////////////////////Users Actions//////////////////////
 
   export function fetchUsersAction(){
       
@@ -127,7 +144,7 @@
         method: "Delete"
       })
         .then(resp => resp.json())
-        .then(payload => dispatch({ type: "DELETE_USER", payload }))
+        .then(payload => dispatch({ type: "DELETE_USER", payload: id }))
         .catch(console.log)
     }
   }
