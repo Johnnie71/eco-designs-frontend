@@ -29,6 +29,7 @@ class DesignShow extends React.Component{
     localSubmitHandler = (e) =>{
         e.preventDefault()
         this.props.submitHandler(this.state.user_id, this.state.design_id, this.state.comment)
+        this.setState({comment: ""})
     }
 
 

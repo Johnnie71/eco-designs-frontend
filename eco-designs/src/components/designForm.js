@@ -30,6 +30,9 @@ class DesignForm extends React.Component{
     localsubmitHandler = (e) =>{
         e.preventDefault()
         this.props.submitHandler(this.state)
+        this.setState({
+            title: "", main_img: "", img_1: "", img_2: "", img_3: "", img_4: "", img_5: "", img_6: "", description: "", category: ""
+        })
     }
 
     // localDeleteHandler = (e) => {
