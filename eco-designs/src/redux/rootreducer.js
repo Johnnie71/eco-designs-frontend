@@ -8,6 +8,7 @@ const defaultState ={
     designs: [],
     users: [],
     comments: [],
+    follows: []
 }
 
 function designReducer(state = defaultState.designs, action){
@@ -91,6 +92,27 @@ function commentReducer(state = defaultState.comments, action){
     }
 }
 
+function followsReducer(state= defaultState.follows, action){
+    switch(action.type){
+
+        case "FETCH_FOLLOWS":
+            console.log("Getting Follows!", action.payload)
+            return action.payload
+
+        case "ADD_FOLLOW":
+            console.log("Adding Follow!", action.payload)
+            return [...state, action.payload]
+
+        case "DELETE_FOLLOW":
+            console.log("deleting Follow!", state, action.payload)
+            return state.filter(follow => follow.id !== action.payload)
+
+        default:
+            return state
+
+    }
+}
+
 //reducer takes in an action
 //reducer also takes in a default state
 
@@ -98,6 +120,7 @@ const rootReducer = combineReducers({
     designs: designReducer,
     users: userReducer,
     comments: commentReducer,
+    follows: followsReducer,
 });
 
 export default rootReducer;

@@ -80,7 +80,7 @@
           "content-type": "application/json",
           "accepts": "application/json"
         },
-        body: JSON.stringify({ user_id: userId, design_id: designId, comment: userComment })
+        body: JSON.stringify({ user_id: 34, design_id: designId, comment: userComment })
       })
         .then(resp => resp.json())
         .then(payload => dispatch({ type: "ADD_COMMENT", payload }))
@@ -168,4 +168,52 @@
     }
   }
 
+
+  /////////////////Follow/Follower Actions///////////////////////
+
+  export function fetchFollowsAction(){
+      
+    return function(dispatch){
+
+       //thunk retains access to dispatch and passes it to the inner function
+        fetch('http://localhost:4000/api/v1/follow_joins/')
+        .then(resp => resp.json())
+        //must have access to dispatch
+        //invoke dispatch with an object as an action
+        .then(data => dispatch({type: "FETCH_FOLLOWS", payload: data }))
+        .catch(console.log)
+    }
+  }
+
+  export function addFollowAction(userId){
+
+    return function(dispatch){
+      console.log("new follow Info:", userId)
+      fetch('http://localhost:4000/api/v1/follow_joins/', {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          "accepts": "application/json"
+        },
+        body: JSON.stringify({following_id: 34, followed_id: userId})
+      })
+        .then(resp => resp.json())
+        .then(payload => dispatch({ type: "ADD_FOLLOW", payload }))
+        .catch(console.log)
+    }
+  }
+
+  export function deleteFollowAction(followId){
+
+    return function(dispatch){
+      console.log("ABOUT TO DELETE follow!:", followId)
+      fetch(`http://localhost:4000/api/v1/follow_joins/${followId}`, {
+        method: "DELETE"
+      })
+        .then(resp => resp.json())
+        .then(data => dispatch({ type: "DELETE_FOLLOW", payload: followId }))
+        .catch(console.log)
+    }
+  }
+  
   
