@@ -6,12 +6,12 @@ class NavBar extends React.Component{
     render(){
         return(
             <nav className="navbaritems">
-                <h1 className="npbp">Eco Designs</h1>
+                <h1>Eco Share</h1>
                 <ul>
                     {MenuItems.map((item, index) => {
                         return (
-                            <li className= "navbarlis" key={index}>
-                                <a className={item.cName} href={item.url}>
+                            <li className= "navbarlist" key={index}>
+                                <a class="btn-mix" data-text={item.title} href={item.url}>
                                 {item.title}
                                 </a>
                             </li>

@@ -57,7 +57,6 @@ class DesignsContainer extends React.Component {
             console.log("hey!", designArray)
        return(
            <div>
-           <h1>Designs Feed</h1>
            <Switch>
            <Route path="/designs/:id" render={(routerProps) => {
                          let id = parseInt(routerProps.match.params.id)
@@ -78,11 +77,14 @@ class DesignsContainer extends React.Component {
                     }}/>
                      <Route path="/" render={()=> {
                         return(
-                        <div className="designCardContainer">
-                            {/* {this.props.designs.length > 0 ? this.renderDesigns() : <h1>LOADING</h1>} */}
-                           {/* {this.renderDesigns()} */}
-                           {this.filterDesigns()}
-                        </div>
+                             <div>
+                                <h1 className="feedHeader">Feed</h1>
+                                    <div className="designsContainer">
+                                        {this.props.designs.length > 0 ? this.filterDesigns() : <h1>LOADING</h1>}
+                                        {/* {this.renderDesigns()} */}
+                                        {/* {this.filterDesigns()} */}
+                                    </div>
+                            </div>
                         )
                     }}/>
 

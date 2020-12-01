@@ -18,13 +18,15 @@ class DesignCard extends React.Component{
         let { main_img, title } = this.props.design
 
         return(
-            
+            <div>
+                 <h4 className="userNameDesignCard">{this.props.design.user.username}</h4>
                 <div className="designCard">
                    <NavLink to={`/designs/${this.props.design.id}`}>
                             <img className="mainImage" src={main_img} alt="mainImg" onClick={this.clickHandler}/>
                    </NavLink>
-                    <h4>{title}</h4>
+                    <h4 className="designCardTitle">{title}</h4>
                 </div>
+            </div>
         )
     }
 

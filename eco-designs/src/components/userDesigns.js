@@ -24,6 +24,8 @@ class UserDesigns extends React.Component{
                     </NavLink>
                  </div>
                     <h2>{title}</h2>
+
+                    {/* {this.props.design.user.id === 34 ? <button onClick={this.localDeleteHandler}>X</button> : null} */}
                     <button onClick={this.localDeleteHandler}>X</button>
             </div>
         )

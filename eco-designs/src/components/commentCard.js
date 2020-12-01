@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { deleteDesignComment } from '../redux/actions'
+import { NavLink } from 'react-router-dom'
 
 class CommentCard extends React.Component{
 
@@ -13,8 +14,11 @@ class CommentCard extends React.Component{
         console.log(this.props.comment.id)
         return(
             <div>
-                <h4>{this.props.comment.comment}<button onClick={this.localDeleteHandler}>Delete</button></h4>
-                
+                <NavLink to={`/users/${this.props.comment.user.id}`} >
+                <strong>{this.props.comment.user.username}</strong>
+                </NavLink>
+                <h4>{this.props.comment.comment}</h4>
+                {this.props.comment.user.id === 34 ? <button onClick={this.localDeleteHandler}>Delete</button> : null }
             </div>
         )
     }
