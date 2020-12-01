@@ -87,39 +87,47 @@ class UserShow extends React.Component{
         let { username, bio, profile_pic } = this.props.user
         return(
             <div>
-                <h1>{username}</h1>
+                <h1 className="myDesignsHeader" >{username}</h1>
                  <div className="usercardProfile">
                     <img className="profileImg" src={profile_pic} alt="profileimg"/>
                  </div>
                  <div className="BioContainer">
+                     <img className="backgroundImage" src="https://images6.alphacoders.com/439/439837.png" alt="backgroundimg" />
                     <div className="Bio">
-                        <strong>Bio:</strong>
+                        <strong className="bioOverhead">Bio:</strong>
                         <h4>{bio}</h4>
                     </div>
-
-                        <h4>Following</h4>
+                    <div className="following">
+                        <h4>FOLLOWING</h4>
                             <h4>{this.following().length}</h4>
-
-                        <h4>Followers</h4>
+                    </div>
+                    <div className="followers">
+                        <h4>FOLLOWERS</h4>
                             <h4>{this.followers().length}</h4>
-
-                        {this.doesUserFollow() ? <button onClick={this.localDeleteFollow}>Unfollow</button> : <button onClick={this.addFollower}>Follow</button>} 
+                    </div>
+                    <div className="followButtonDiv">
+                        {this.doesUserFollow() ? <button className="unfollowButton" onClick={this.localDeleteFollow}>Unfollow</button> : <button className="followButton"  onClick={this.addFollower}>Follow</button>} 
+                    </div>
                  </div>
                     {/* {this.props.user.id === 34 ? 
                         <div> */}
-                            {this.state.clicked ? <button onClick={this.clickHandler}>Done</button> : <button onClick={this.clickHandler}>Edit Profile</button>}
-                            {this.state.designClicked ? <button onClick={this.designClickHandler}>Done</button> : <button onClick={this.designClickHandler}>Add Design</button>}
+                            {this.state.clicked ? <button className="editProfileButton" onClick={this.clickHandler}>Done</button> : <button className="editProfileButton" onClick={this.clickHandler}>Edit Profile</button>}
+                            
                             {this.state.clicked ? <EditProfile user={this.props.user} /> : null }
-                            {this.state.designClicked ? <DesignForm user={this.props.user}/> : null}
+                            
                          {/* </div>
                         :
                     null
                     }  */}
                 
-                    <h1>My Designs</h1>
-                    <div className="designCardContainer">
-                        {this.userDesigns()}
+                    <h1 className="myDesignsHeader">My Designs</h1>
+                    <div class="module-border-wrap">
+                        <div className="designCardContainer">
+                            {this.userDesigns()}
+                        </div>
                     </div>
+                        {this.state.designClicked ? <button className="addDesignFormButton" onClick={this.designClickHandler}>Done</button> : <button className="addDesignFormButton" onClick={this.designClickHandler}>Add Design</button>}
+                        {this.state.designClicked ? <DesignForm user={this.props.user}/> : null}
             </div>
 
         )

@@ -17,7 +17,7 @@ class UserDesigns extends React.Component{
         let { title, main_img } = this.props.design
         // console.log(this.props.user.id, this.props.design.id)
         return(
-            <div>  
+            <div className="designcardcontainer">  
                  <div className="designCard">
                     <NavLink to={`/designs/${this.props.design.id}`} >
                         <img className="mainImage" src={main_img} alt="mainimg" />

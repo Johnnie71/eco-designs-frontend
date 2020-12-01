@@ -38,23 +38,43 @@
 } */
 
 .designCardContainer{
+  position: relative ;
+  border-style: solid ;
+  border-color: yellowgreen; 
+  background: #1E1F21;
+  left: 10%;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
   /* margin: ; */
-  /* border: 1px solid rgb(27, 27, 27); */
+  /* background-image: linear-gradient(to right, red, purple); */
+  padding: 3px;
+  max-width: 80%;
 }
 
-/* .designCard {
+/* .module-border-wrap {
+  padding: 1rem;
+  position: relative;
+  background: linear-gradient(to right, red, purple);
+  padding: 2px;
+} */
+
+.cardcontainer{
+  max-width: 50%;
+  max-height: 50%;
+  border-style: solid;
+}
+
+ /* .designCard {
   transition: 0.3s;
   width: 50%;
   padding: 10pix;
   margin: 10pix;
   text-align: center;
-  /* display: inline; */
-  /* flex: 0 0 33.333333%; */
-  /* text-decoration-color: blue; */
-/* } */ 
+  display: inline;
+  flex: 0 0 33.333333%;
+  text-decoration-color: blue; 
+ }  */
 
 /* .mainImage {
   height: auto; 
@@ -137,6 +157,11 @@ color: #9CFF00;
   height: 337px;
 }
 
+.myDesignsHeader{
+  color: white;
+  font-family: "Brush Script MT", sans-serif;
+}
+
 .designCard {
   box-shadow: 0 4px 8px 0 #9CFF00;
   max-width: 300px;
@@ -147,9 +172,21 @@ color: #9CFF00;
 .designCard:hover{
   box-shadow: 0 4px 8px 0 rgb(202, 20, 105);
 }
+
+
 .mainImage {
   width: 100%;
   /* max-height: 175px; */
+}
+
+.addDesignFormButton{
+  position: relative;
+  left: 38%;
+}
+
+.editProfileButton{
+  position: relative;
+  left: 38%;
 }
 
 .userNameDesignCard{
@@ -233,8 +270,148 @@ div.gallery img {
 }
 
 .BioContainer{
-  border-style: solid;
-  width: 90%;
+  border-bottom-style: solid;
+  border-width: 2px;
+  background-image: 
+    linear-gradient(
+      to right, 
+      #9CFF00, 
+      rgb(202, 20, 105)
+    ) 1 100%;
+  max-width: 90%;
+  max-height: 330px;
+}
+
+.Bio {
+  position: relative;
+  max-width: 50%;
+  color: white;
+  bottom: 150px;
+  left: 330px;
+  margin-right: 150px;
+}
+
+.bioOverhead{
+position: relative;
+right: 245px;
+}
+
+.following {
+  /* font: .5em "Roboto", sans-serif; */
+  font-family: "Brush Script MT", sans-serif;
+  position: relative;
+  color: white;
+  bottom: 380px;
+  left: 10px;
+}
+
+.followers {
+  /* font: .5em "Brush Script MT", cursive; */
+  font-family: "Brush Script MT", cursive;
+  position: relative;
+  color: white;
+  bottom: 459px;
+  left: 170px;
+}
+
+.followButtonDiv{
+  position: relative;
+  bottom: 560px;
+  left: 450px;
+}
+
+.unfollowButton{
+  -webkit-appearance: none;
+  background: -webkit-gradient(to right, #9CFF00 0%, #fceeb5 50%, #ee786e 100%);
+  background: linear-gradient(to right, #ee786e 0%, #fceeb5 50%, #a2ccb6 100%);
+  background-size: 500%;
+  border: solid;
+  border-radius: 5rem;
+  box-shadow: 0 0.3rem 1rem #a2ccb6;
+  color: #fff;
+  cursor: pointer;
+  font: 1em "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 3rem;
+  letter-spacing: 0.05em;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 8rem;
+}
+
+button:hover {
+  animation-name: gradient;
+  -webkit-animation-name: gradient;
+  animation-duration: 2s;
+  -webkit-animation-duration: s;
+  animation-iteration-count: 1;
+  -webkit-animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100%;
+  }
+}
+
+.followButton{
+  -webkit-appearance: none;
+  background: -webkit-gradient(to right, #9CFF00 0%, #fceeb5 50%, #ee786e 100%);
+  background: linear-gradient(to right, #a2ccb6 0%, #fceeb5 50%, #ee786e 100%);
+  background-size: 500%;
+  border: solid;
+  border-radius: 5rem;
+  box-shadow: 0 0.3rem 1rem rgb(202, 20, 105);
+  color: #fff;
+  cursor: pointer;
+  font: 1em "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 3rem;
+  letter-spacing: 0.05em;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 8rem;
+}
+
+button:hover {
+  animation-name: gradient;
+  -webkit-animation-name: gradient;
+  animation-duration: 2s;
+  -webkit-animation-duration: s;
+  animation-iteration-count: 1;
+  -webkit-animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100%;
+  }
+}
+
+.backgroundImage{
+  object-fit: cover;
+  object-position: 0 58%;
+  width: 1075px;
   height: 330px;
 }
 
