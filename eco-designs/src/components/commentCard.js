@@ -13,13 +13,15 @@ class CommentCard extends React.Component{
     render(){
         console.log(this.props.comment.id)
         return(
-            <div>
+            <>
+            <div className="commentCard">
                 <NavLink to={`/users/${this.props.comment.user.id}`} >
-                <strong>{this.props.comment.user.username}</strong>
+                    <strong className="commentUser" >{this.props.comment.user.username}</strong>
                 </NavLink>
-                <h4>{this.props.comment.comment}</h4>
-                {this.props.comment.user.id === 34 ? <button onClick={this.localDeleteHandler}>Delete</button> : null }
+                <h4 className="comment">{this.props.comment.comment}</h4>
             </div>
+                {this.props.comment.user.id === 34 ? <button className="deleteCommentButton" onClick={this.localDeleteHandler}>Delete</button> : null }
+            </>
         )
     }
 }

@@ -23,10 +23,10 @@ class UserDesigns extends React.Component{
                         <img className="mainImage" src={main_img} alt="mainimg" />
                     </NavLink>
                  </div>
-                    <h2>{title}</h2>
+                    <h2 className="designCardTitle" >{title}</h2>
 
                     {/* {this.props.design.user.id === 34 ? <button onClick={this.localDeleteHandler}>X</button> : null} */}
-                    <button onClick={this.localDeleteHandler}>X</button>
+                    <button className="glow-on-hover-x"  onClick={this.localDeleteHandler}>X</button>
             </div>
         )
     } 

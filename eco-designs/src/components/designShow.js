@@ -36,22 +36,24 @@ class DesignShow extends React.Component{
 
     render(){
 
-        let { main_img, title, img_1, img_2, img_3, img_4, img_5, img_6, description, category, user } = this.props.design
+        let { main_img, title, img_1, img_2, img_3, img_4, img_5, img_6, description, user } = this.props.design
         // console.log(this.state.comment)
         return(
             <div className="designshow">
                 <div className="mainimagecontainer">
-                <img className="mainImage" src={main_img} alt="mainImg" />
+                    <img className="mainImage" src={main_img} alt="mainImg" />
                 </div>
-            <h4>{title}</h4>
-            <h3>Designer:</h3>
-            <NavLink to={`/users/${this.props.design.user.id}`} >
-                <h4>{user.username}</h4>
-            </NavLink>
-            <h3>Description:</h3>
-            <h3>{description}</h3>
-            <h3>Category:</h3>
-            <h4>{category}</h4>
+                <div className="designInfoContainer">
+                    <h3 className="titleheader">Title:</h3>
+                    <h4 className="title">{title}</h4>
+                    <h3 className="designerheader">Designer:</h3>
+                        <NavLink to={`/users/${this.props.design.user.id}`} >
+                            <h4 className="designer">{user.username}</h4>
+                        </NavLink>
+                        <h3 className="descriptionHeader">Description:</h3>
+                            <h3 className="description">{description}</h3>
+                </div>
+                    
             <div className="designCardContainer">
                 <div className="gallery">
                     <img className="altImage" src={img_1} alt="mainImg" />
@@ -72,12 +74,16 @@ class DesignShow extends React.Component{
                     <img className="altImage" src={img_6} alt="mainImg" />
                 </div>
             </div>
-            <h1>Comments</h1>
-            {this.renderComments()}
-            <form onSubmit={this.localSubmitHandler}>
-                <input type="text" value={this.state.comment} placeholder="Add Comment" onChange={this.changeHandler} />
-                <button type="submit">Add Comment</button>
-            </form>
+                <h1 className="commentsHeader">Comments</h1>
+                <div className="commentContainer">
+                    {this.renderComments()}
+                </div>
+                <div>
+                    <form onSubmit={this.localSubmitHandler}>
+                        <input type="text" value={this.state.comment} placeholder="Add Comment" onChange={this.changeHandler} />
+                        <button type="submit">Add Comment</button>
+                    </form>
+                </div>
          </div>
         )
     }

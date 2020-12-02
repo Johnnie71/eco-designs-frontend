@@ -111,7 +111,7 @@ class UserShow extends React.Component{
                  </div>
                     {/* {this.props.user.id === 34 ? 
                         <div> */}
-                            {this.state.clicked ? <button className="editProfileButton" onClick={this.clickHandler}>Done</button> : <button className="editProfileButton" onClick={this.clickHandler}>Edit Profile</button>}
+                            {this.state.clicked ? <button className="glow-on-hover" onClick={this.clickHandler}>Done</button> : <button className="glow-on-hover" onClick={this.clickHandler}>Edit Profile</button>}
                             
                             {this.state.clicked ? <EditProfile user={this.props.user} /> : null }
                             
@@ -126,7 +126,7 @@ class UserShow extends React.Component{
                             {this.userDesigns()}
                         </div>
                     </div>
-                        {this.state.designClicked ? <button className="addDesignFormButton" onClick={this.designClickHandler}>Done</button> : <button className="addDesignFormButton" onClick={this.designClickHandler}>Add Design</button>}
+                        {this.state.designClicked ? <button class="glow-on-hover" onClick={this.designClickHandler}>Done</button> : <button class="glow-on-hover" onClick={this.designClickHandler}>Add Design</button>}
                         {this.state.designClicked ? <DesignForm user={this.props.user}/> : null}
             </div>
 
