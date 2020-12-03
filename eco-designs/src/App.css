@@ -120,6 +120,12 @@
   font-size: 17px;
 } */
 
+.users{
+ color: #9CFF00;
+ font-size: 2em;
+ font-family: "Roboto", sans-serif;
+}
+
 .usercard {
   box-shadow: 0 4px 8px 0 #9CFF00;
   max-width: 300px;
@@ -274,7 +280,7 @@ color: #9CFF00;
 
 .deleteCommentButton{
   position: relative;
-  left: 15%;
+  left: 43%;
   bottom: 80px;
 }
 
@@ -311,7 +317,8 @@ div.gallery {
   margin: 5px;
   /* border: 1px solid #ccc; */
   float: center;
-  width: 180px;
+  width: 300px;
+  height: 350px;
 }
 
 /* div.gallery:hover {
@@ -736,3 +743,4 @@ a {
   50% { background-position: 400% 0; }
   100% { background-position: 0 0; }
 }
+
