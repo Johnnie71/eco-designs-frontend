@@ -24,9 +24,13 @@ class UserDesigns extends React.Component{
                     </NavLink>
                  </div>
                     <h2 className="designCardTitle" >{title}</h2>
-
-                    {/* {this.props.design.user.id === 34 ? <button onClick={this.localDeleteHandler}>X</button> : null} */}
-                    <button className="glow-on-hover-x"  onClick={this.localDeleteHandler}>X</button>
+                    {this.props.deleteButtonClicked ? 
+                        <button className="glow-on-hover-x" onClick={this.localDeleteHandler}>X</button>
+                        :
+                        null
+                     }
+                    {/* {this.props.design.user.id === 32 ? <button className="glow-on-hover-x" onClick={this.localDeleteHandler}>X</button> : null} */}
+                    {/* <button className="glow-on-hover-x"  onClick={this.localDeleteHandler}>X</button> */}
             </div>
         )
     } 

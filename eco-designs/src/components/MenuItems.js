@@ -11,7 +11,7 @@ export const MenuItems = [
     },
     {
         title: "Profile",
-        url: "http://localhost:3000/users/34",
+        url: "http://localhost:3000/users/32",
         cName: 'nav-links'
     },
 

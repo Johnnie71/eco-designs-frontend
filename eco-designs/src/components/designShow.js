@@ -81,7 +81,7 @@ class DesignShow extends React.Component{
                 <div>
                     <form onSubmit={this.localSubmitHandler}>
                         <input type="text" value={this.state.comment} placeholder="Add Comment" onChange={this.changeHandler} />
-                        <button type="submit">Add Comment</button>
+                        <button className="glow-on-hover-addCommentButton" type="submit">Add Comment</button>
                     </form>
                 </div>
          </div>

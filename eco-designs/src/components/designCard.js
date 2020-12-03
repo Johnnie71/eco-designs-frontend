@@ -19,7 +19,9 @@ class DesignCard extends React.Component{
 
         return(
             <div>
-                 <h4 className="userNameDesignCard">{this.props.design.user.username}</h4>
+                <NavLink to={`/users/${this.props.design.user.id}`} >
+                    <h4 className="userNameDesignCard">{this.props.design.user.username}</h4>
+                </NavLink>
                 <div className="designCard">
                    <NavLink to={`/designs/${this.props.design.id}`}>
                             <img className="mainImage" src={main_img} alt="mainImg" onClick={this.clickHandler}/>
