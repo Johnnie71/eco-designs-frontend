@@ -37,7 +37,7 @@ class SignUp extends React.Component{
                     <input name="password_digest" type="password" placeholder="password" value={this.state.password_digest} onChange={this.changeHandler} />
                     <button type="submit">Sign Up!</button>
                 </form>
-                <h4>Already have an account?</h4>
+                <h4 className="haveAnAccountHeader">Already have an account?</h4>
                 <NavLink to={"/login"}>
                         <strong>Sign In!</strong>
                 </NavLink>

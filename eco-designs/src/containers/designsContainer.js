@@ -70,7 +70,7 @@ class DesignsContainer extends React.Component {
                                 <div>
                                     <DesignShow design={design} />
                                 </div>
-                                    : <h1>Loading</h1>
+                                    : <h1>- -LOADING- -</h1>
                                 }
                              </>
                          )
@@ -80,7 +80,7 @@ class DesignsContainer extends React.Component {
                              <div>
                                 <h1 className="feedHeader">Feed</h1>
                                     <div className="designsContainer">
-                                        {this.props.designs.length > 0 ? this.filterDesigns() : <h1>LOADING</h1>}
+                                        {this.props.designs.length > 0 ? this.filterDesigns() : <h1>- -LOADING- -</h1>}
                                         {/* {this.renderDesigns()} */}
                                         {/* {this.filterDesigns()} */}
                                     </div>

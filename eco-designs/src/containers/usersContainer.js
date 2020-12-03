@@ -49,7 +49,7 @@ class UsersContainer extends React.Component{
                                 <div>
                                     <UserShow user={user} />
                                 </div>
-                                    : <h1>Loading</h1>
+                                    : <h1 className="Loading">- -LOADING- -</h1>
                                 }
                              </>
                          )
@@ -64,7 +64,7 @@ class UsersContainer extends React.Component{
                             {/* {this.props.users.length > 0 ? this.renderUsers() : <h1>LOADING</h1>} */}
                             {/* {this.renderUsers()} */}
                             <div className="usersContainer">
-                                {this.props.users.length > 0 ? users : <h1>LOADING</h1>}
+                                {this.props.users.length > 0 ? users : <h1>- -LOADING- -</h1>}
                             </div>
                         </div>
                         )

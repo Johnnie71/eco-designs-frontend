@@ -16,7 +16,7 @@ class CommentCard extends React.Component{
             <>
             <div className="commentCard">
                 <NavLink to={`/users/${this.props.comment.user.id}`} >
-                    <strong className="commentUser" >{this.props.comment.user.username}</strong>
+                    <strong className="commentUser" >{this.props.comment.user.username}:</strong>
                 </NavLink>
                 <h4 className="comment">{this.props.comment.comment}</h4>
             </div>
