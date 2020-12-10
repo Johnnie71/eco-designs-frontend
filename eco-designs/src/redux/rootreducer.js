@@ -44,28 +44,11 @@ function userReducer(state = defaultState.users, action){
 
         case "DELETE_USER":
             console.log("Deleting User:", action.payload)
-            // const users = state.filter(user => user.id !== action.id)
             return state.filter(user => user.id !== action.payload)
 
         case "EDIT_USER":
             console.log("Editing user!", action.payload)
             return state.map((user) => user.id === action.payload.id)
-            // let newArray = [...state]
-            // let foundUser = newArray.find(el => el.id === action.payload.id)
-            // newArray[newArray.indexOf(foundUser)]
-            // return {
-            //     ...state, state: [...state, action.payload]
-            // }
-            // return state.map((user, index) => {
-                // Find the item with the matching id
-                // if(user.id === action.payload.id) {
-                  // Return a new object
-                //   return [...state, action.payload]
-                // }
-            
-                // Leave every other item unchanged
-                // return user;
-            //   });
 
         default:
             return state

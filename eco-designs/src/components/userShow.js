@@ -22,9 +22,9 @@ class UserShow extends React.Component{
     }
 
     userDesigns = () =>{
+        //filters out the designs from backend by the user ID of the current user show page
         let userdesigns = this.props.designs.filter(design => design.user.id === this.props.user.id)
         // console.log(userdesigns)
-        // return this.props.user.designs.map(design => <UserDesigns key={design.id} design={design} user={this.props.user} />)
         return userdesigns.map(design => <UserDesigns key={design.id} design={design} user={this.props.user} deleteButtonClicked={this.state.deleteButtonClicked} />)
     
     }
@@ -49,7 +49,7 @@ class UserShow extends React.Component{
     
     doesUserFollow = () => {
         let filteredFollows = this.props.follows.filter(follow => follow.followed_id === this.props.user.id)
-        //checks to see if the selected user profile is followed by user with id of 34..returns true or false
+        //checks to see if the selected user profile is followed by user with id of 32..returns true or false
         return filteredFollows.map(follow => follow.following_id).includes(32)
         // console.log(this.state.followedBy)
     }
@@ -71,8 +71,7 @@ class UserShow extends React.Component{
 
     localDeleteFollow = () => {
         let followId = this.props.follows.filter(follow => follow.following_id === 32 && follow.followed_id === this.props.user.id)[0].id
-        // let followingId = followId.following_id
-        // let followedId = followId.followed_id
+
         // console.log(followingId, followedId)
        
         this.props.deleteFollowHandler(followId)
@@ -87,10 +86,7 @@ class UserShow extends React.Component{
 
 
     render(){
-        console.log(this.state.deleteButtonClicked)
-        // console.log(this.state.followedBy)
-        // console.log(this.state.followedBy.map(follow => follow.following_id).includes(34))
-        // console.log(this.doesUserFollow())
+
         let { username, bio, profile_pic } = this.props.user
         return(
             <div>

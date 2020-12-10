@@ -18,20 +18,20 @@ class DesignsContainer extends React.Component {
     }
    
      filteredFollows = () =>{
-         /// filters out the follow relationships in state according to the user of 34
+         /// filters out the follow relationships in state according to the user of 32
          let filteredfollow = this.props.follows.filter(follow => follow.following_id === 32)
-         //gets all the ids of everyone 34 follows puts them in an array
+         //gets all the ids of everyone 32 follows puts them in an array
          return filteredfollow.map(follow => follow.followed_id)
      }
 
      
     
      filterDesigns = () =>{
-        //  trying to filter out the designs according to who user 34 follows
+        //  trying to filter out the designs according to who user 32 follows
         var designArray = this.props.designs
         var filterArray = this.filteredFollows()
 
-        // compares both arrays of designs and followers and filters out the designs to match the id of the users that 34 follows
+        // compares both arrays of designs and followers and filters out the designs to match the id of the users that 32 follows
         // for the feed
                 designArray = designArray.filter(function(item){
                     return filterArray.includes(item.user.id)
@@ -46,7 +46,7 @@ class DesignsContainer extends React.Component {
    render(){
         // console.log(this.props.designs.filter(design => design.user.id === this.filteredFollows()))
         var designArray = this.props.designs
-        console.log("Design Array",designArray)
+        // console.log("Design Array",designArray)
         var filterArray = this.filteredFollows()
 
             designArray = designArray.filter(function(item){
@@ -80,9 +80,9 @@ class DesignsContainer extends React.Component {
                              <div>
                                 <h1 className="feedHeader">Feed</h1>
                                     <div className="designsContainer">
+                                        
                                         {this.props.designs.length > 0 ? this.filterDesigns() : <h1>- -LOADING- -</h1>}
-                                        {/* {this.renderDesigns()} */}
-                                        {/* {this.filterDesigns()} */}
+                            
                                     </div>
                             </div>
                         )

@@ -15,9 +15,6 @@ class UsersContainer extends React.Component{
         searchValue: ""
     }
 
-    // renderUsers = () =>{
-    //     return this.props.users.map(user => <UserCard key={user.id} user={user} />)
-    // }
 
     searchHandler = (e) =>{
         console.log(e.target.value)
@@ -60,9 +57,7 @@ class UsersContainer extends React.Component{
                         <div>
                             <Search searchValue={this.state.searchValue} searchHandler={this.searchHandler}/>
                             <h3 className="users">Users:</h3>
-                            {/* <CreateUser newSubmitHandler={this.newSubmitHandler} /> */}
-                            {/* {this.props.users.length > 0 ? this.renderUsers() : <h1>LOADING</h1>} */}
-                            {/* {this.renderUsers()} */}
+                           
                             <div className="usersContainer">
                                 {this.props.users.length > 0 ? users : <h1>- -LOADING- -</h1>}
                             </div>

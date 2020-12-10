@@ -14,7 +14,7 @@ class DesignShow extends React.Component{
     }
 
     renderComments = () => {
-        //filters out the comments based on which design its under
+        //filters out the comments based on which designs it belongs to
         let designComments = this.props.comments.filter(comment => comment.design_id === this.props.design.id )
         console.log(designComments)
         return designComments.map(comment => <CommentCard key={comment.id} comment={comment} />)

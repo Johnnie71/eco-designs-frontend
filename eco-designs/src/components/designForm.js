@@ -35,10 +35,6 @@ class DesignForm extends React.Component{
         })
     }
 
-    // localDeleteHandler = (e) => {
-    //     this.props.deleteHandler(this.props.user.id)
-    // }
-
     render(){
 
         return(
@@ -66,7 +62,6 @@ function mapDispatchToProps(dispatch){
 
     return { 
         submitHandler: ( newDesign ) => dispatch(addDesignAction( newDesign )),
-        // deleteHandler: (id) => dispatch(deleteUserAction(id))
     } 
 }
 
