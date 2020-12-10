@@ -4,7 +4,7 @@ import './App.css';
 // import Header from './components/header'
 import DesignsContainer from './containers/designsContainer'
 import { connect } from 'react-redux'
-import { fetchDesignsAction, fetchUsersAction, fetchCommentsAction } from './redux/actions'
+import { fetchDesignsAction, fetchUsersAction, fetchCommentsAction, fetchFollowsAction } from './redux/actions'
 import UsersContainer from './containers/usersContainer'
 import NavBar from './components/NavBar'
 import Login from './components/Login'
@@ -17,6 +17,7 @@ class App extends React.Component {
     this.props.fetchDesigns();
     this.props.fetchUsers();
     this.props.fetchComments();
+    this.props.fetchFollows();
   }
 
   render(){
@@ -40,6 +41,7 @@ const mapDispatchToProps = (dispatch) =>{
     fetchDesigns: () => dispatch(fetchDesignsAction()),
     fetchUsers: () => dispatch(fetchUsersAction()),
     fetchComments: () => dispatch(fetchCommentsAction()),
+    fetchFollows: () => dispatch(fetchFollowsAction())
   }
 }
 

@@ -8,18 +8,56 @@ import {Route, Switch} from 'react-router-dom'
 
 class DesignsContainer extends React.Component {
 
+   
+
 
     renderDesigns = () =>{
-        console.log(this.props.designs)
+        ///renders all designs from state
+        // console.log(this.props.designs)
         return this.props.designs.map(des => <DesignCard key={des.id} design={des} />)
     }
+   
+     filteredFollows = () =>{
+         /// filters out the follow relationships in state according to the user of 34
+         let filteredfollow = this.props.follows.filter(follow => follow.following_id === 34)
+         //gets all the ids of everyone 34 follows puts them in an array
+         return filteredfollow.map(follow => follow.followed_id)
+     }
+
+     
+    
+     filterDesigns = () =>{
+        //  trying to filter out the designs according to who user 34 follows
+        var designArray = this.props.designs
+        var filterArray = this.filteredFollows()
+
+        // compares both arrays of designs and followers and filters out the designs to match the id of the users that 34 follows
+        // for the feed
+                designArray = designArray.filter(function(item){
+                    return filterArray.includes(item.user.id)
+                })
+        return designArray.map(des => <DesignCard key={des.id} design={des} />)
+     }
+
+
+
 
 
    render(){
-        console.log(this.props.designs)
+        // console.log(this.props.designs.filter(design => design.user.id === this.filteredFollows()))
+        var designArray = this.props.designs
+        console.log("Design Array",designArray)
+        var filterArray = this.filteredFollows()
+
+            designArray = designArray.filter(function(item){
+                    return filterArray.includes(item.user.id)
+            })
+
+            console.log("Follows", filterArray)
+            console.log("hey!", designArray)
        return(
            <div>
-           <h1>Designs</h1>
+           <h1>Designs Feed</h1>
            <Switch>
            <Route path="/designs/:id" render={(routerProps) => {
                          let id = parseInt(routerProps.match.params.id)
@@ -42,7 +80,8 @@ class DesignsContainer extends React.Component {
                         return(
                         <div className="designCardContainer">
                             {/* {this.props.designs.length > 0 ? this.renderDesigns() : <h1>LOADING</h1>} */}
-                           {this.renderDesigns()}
+                           {/* {this.renderDesigns()} */}
+                           {this.filterDesigns()}
                         </div>
                         )
                     }}/>
@@ -54,7 +93,10 @@ class DesignsContainer extends React.Component {
 }
 
 function mapStateToProps(state){
-    return { designs: state.designs };
+    return { 
+        designs: state.designs,
+        follows: state.follows
+     };
 };
 
 export default connect(mapStateToProps)(DesignsContainer)
