@@ -14,7 +14,7 @@ class UserCard extends React.Component{
             <div className="usercard">
                     <NavLink to={`/users/${this.props.user.id}`} >
                         <img className="profileImg" src={profile_pic} alt="profileimg" />
-                        <h1>{username}</h1>
+                        <h1 className="userCardName">{username}</h1>
                     </NavLink>
             </div>
         )

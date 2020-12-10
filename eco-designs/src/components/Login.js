@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 
 class Login extends React.Component{
@@ -23,7 +24,9 @@ class Login extends React.Component{
                 <form >
                 <input name="username" type="text" placeholder="username" value={this.state.username} onChange={this.changeHandler} />
                 <input name="password_digest" type="password" placeholder="password" value={this.state.password_digest} onChange={this.changeHandler} />
-                <button type="submit">Log In</button>
+                <NavLink to={`/`} >
+                    <button type="submit">Log In</button>
+                </NavLink>
                 </form>
             </div>
 

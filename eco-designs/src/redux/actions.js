@@ -80,7 +80,7 @@
           "content-type": "application/json",
           "accepts": "application/json"
         },
-        body: JSON.stringify({ user_id: 34, design_id: designId, comment: userComment })
+        body: JSON.stringify({ user_id: 32, design_id: designId, comment: userComment })
       })
         .then(resp => resp.json())
         .then(payload => dispatch({ type: "ADD_COMMENT", payload }))
@@ -195,7 +195,7 @@
           "content-type": "application/json",
           "accepts": "application/json"
         },
-        body: JSON.stringify({following_id: 34, followed_id: userId})
+        body: JSON.stringify({following_id: 32, followed_id: userId})
       })
         .then(resp => resp.json())
         .then(payload => dispatch({ type: "ADD_FOLLOW", payload }))

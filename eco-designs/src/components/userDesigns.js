@@ -17,14 +17,20 @@ class UserDesigns extends React.Component{
         let { title, main_img } = this.props.design
         // console.log(this.props.user.id, this.props.design.id)
         return(
-            <div>  
+            <div className="designcardcontainer">  
                  <div className="designCard">
                     <NavLink to={`/designs/${this.props.design.id}`} >
                         <img className="mainImage" src={main_img} alt="mainimg" />
                     </NavLink>
                  </div>
-                    <h2>{title}</h2>
-                    <button onClick={this.localDeleteHandler}>X</button>
+                    <h2 className="designCardTitle" >{title}</h2>
+                    {this.props.deleteButtonClicked ? 
+                        <button className="glow-on-hover-x" onClick={this.localDeleteHandler}>X</button>
+                        :
+                        null
+                     }
+                    {/* {this.props.design.user.id === 32 ? <button className="glow-on-hover-x" onClick={this.localDeleteHandler}>X</button> : null} */}
+                    {/* <button className="glow-on-hover-x"  onClick={this.localDeleteHandler}>X</button> */}
             </div>
         )
     } 

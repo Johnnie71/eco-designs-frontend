@@ -13,6 +13,7 @@ class UserShow extends React.Component{
         // followedBy: this.props.follows.filter(follow => follow.followed_id === this.props.user.id),
         clicked: false,
         designClicked: false,
+        deleteButtonClicked: false,
         name: this.props.user.name,
         username: this.props.user.username,
         profile_pic: this.props.user.profile_pic,
@@ -21,10 +22,10 @@ class UserShow extends React.Component{
     }
 
     userDesigns = () =>{
+        //filters out the designs from backend by the user ID of the current user show page
         let userdesigns = this.props.designs.filter(design => design.user.id === this.props.user.id)
         // console.log(userdesigns)
-        // return this.props.user.designs.map(design => <UserDesigns key={design.id} design={design} user={this.props.user} />)
-        return userdesigns.map(design => <UserDesigns key={design.id} design={design} user={this.props.user} />)
+        return userdesigns.map(design => <UserDesigns key={design.id} design={design} user={this.props.user} deleteButtonClicked={this.state.deleteButtonClicked} />)
     
     }
 
@@ -48,8 +49,8 @@ class UserShow extends React.Component{
     
     doesUserFollow = () => {
         let filteredFollows = this.props.follows.filter(follow => follow.followed_id === this.props.user.id)
-        //checks to see if the selected user profile is followed by user with id of 34..returns true or false
-        return filteredFollows.map(follow => follow.following_id).includes(34)
+        //checks to see if the selected user profile is followed by user with id of 32..returns true or false
+        return filteredFollows.map(follow => follow.following_id).includes(32)
         // console.log(this.state.followedBy)
     }
 
@@ -59,7 +60,7 @@ class UserShow extends React.Component{
     }
 
     followers = () => {
-        //filters out the array of totoal follows from the db that match the user profile id to find who they are following.
+        //filters out the array of total follows from the db that match the user profile id to find who they are following.
         return this.props.follows.filter(user => user.followed_id === this.props.user.id)
     }
 
@@ -69,48 +70,78 @@ class UserShow extends React.Component{
     }
 
     localDeleteFollow = () => {
-        let followId = this.props.follows.filter(follow => follow.following_id === 34 && follow.followed_id === this.props.user.id)[0].id
-        // let followingId = followId.following_id
-        // let followedId = followId.followed_id
+        let followId = this.props.follows.filter(follow => follow.following_id === 32 && follow.followed_id === this.props.user.id)[0].id
+
         // console.log(followingId, followedId)
        
         this.props.deleteFollowHandler(followId)
     }
 
+    showDelete = () => {
+        this.setState(previousState => ({ 
+            deleteButtonClicked: !previousState.deleteButtonClicked
+        }))
+    }
+
 
 
     render(){
-        console.log(this.props.follows)
-        // console.log(this.state.followedBy)
-        // console.log(this.state.followedBy.map(follow => follow.following_id).includes(34))
-        console.log(this.doesUserFollow())
-        let { name, bio, profile_pic} = this.props.user
+
+        let { username, bio, profile_pic } = this.props.user
         return(
             <div>
-                <h1>User Card</h1>
-                
-                    <h1>{name}</h1>
-                    <strong>Bio:</strong>
-                    <h4>{bio}</h4>
-                 <div className="usercard">
+                <h1 className="myDesignsHeader" >{username}</h1>
+                 <div className="usercardProfile">
                     <img className="profileImg" src={profile_pic} alt="profileimg"/>
                  </div>
-                <h4>Following</h4>
-                {/* <h4>{isFollowing.length}</h4> */}
-                <h4>{this.following().length}</h4>
-                <h4>Followers</h4>
-                {/* <h4>{isFollowedBy.length}</h4> */}
-                <h4>{this.followers().length}</h4>
-                  {this.doesUserFollow() ? <button onClick={this.localDeleteFollow}>Unfollow</button> : <button onClick={this.addFollower}>Follow</button>} 
-                  
-                    {this.state.clicked ? <button onClick={this.clickHandler}>Done</button> : <button onClick={this.clickHandler}>Edit Profile</button>}
-                    {this.state.designClicked ? <button onClick={this.designClickHandler}>Done</button> : <button onClick={this.designClickHandler}>Add Design</button>}
-                    {this.state.clicked ? <EditProfile user={this.props.user} /> : null }
-                    {this.state.designClicked ? <DesignForm user={this.props.user}/> : null}
-                    <h1>My Designs</h1>
-                    <div className="designCardContainer">
-                        {this.userDesigns()}
+                 <div className="BioContainer">
+                     <img className="backgroundImage" src="https://images6.alphacoders.com/439/439837.png" alt="backgroundimg" />
+                    <div className="Bio">
+                        <strong className="bioOverhead">Bio:</strong>
+                        <h4>{bio}</h4>
                     </div>
+                    <div className="following">
+                        <h4>FOLLOWING</h4>
+                            <h4>{this.following().length}</h4>
+                    </div>
+                    <div className="followers">
+                        <h4>FOLLOWERS</h4>
+                            <h4>{this.followers().length}</h4>
+                    </div>
+                    {this.props.user.id !== 32 ? 
+                        <div className="followButtonDiv">
+                            {this.doesUserFollow() ? <button className="unfollowButton" onClick={this.localDeleteFollow}>Unfollow</button> : <button className="followButton"  onClick={this.addFollower}>Follow</button>} 
+                        </div>
+                    :
+                    null
+                }
+                 </div>
+                    {this.props.user.id === 32 ? 
+                        <div>
+                            {this.state.clicked ? <button className="glow-on-hover-edit" onClick={this.clickHandler}>Done</button> : <button className="glow-on-hover-edit" onClick={this.clickHandler}>Edit Profile</button>}
+                            
+                            {this.state.clicked ? <EditProfile user={this.props.user} /> : null }
+                            
+                         </div>
+                        :
+                    null
+                    } 
+                
+                    <h1 className="myDesignsHeader">My Designs</h1>
+                    <div className="module-border-wrap">
+                        <div className="designCardContainer">
+                            {this.userDesigns()}
+                        </div>
+                    </div>
+                    {this.props.user.id === 32 ? 
+                    <div>
+                        {this.state.deleteButtonClicked ? <button className="glow-on-hover-delete" onClick={this.showDelete}>Done</button> : <button className="glow-on-hover-delete" onClick={this.showDelete}>Delete Designs</button> }
+                        {this.state.designClicked ? <button className="glow-on-hover" onClick={this.designClickHandler}>Done</button> : <button className="glow-on-hover" onClick={this.designClickHandler}>Add Design</button>}
+                        {this.state.designClicked ? <DesignForm user={this.props.user}/> : null}
+                    </div>
+                    :
+                    null
+                }
             </div>
 
         )
