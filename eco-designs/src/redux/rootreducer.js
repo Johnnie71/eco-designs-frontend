@@ -7,32 +7,23 @@ import { combineReducers } from 'redux'
 const defaultState ={
     designs: [],
     users: [],
+    comments: [],
 }
 
 function designReducer(state = defaultState.designs, action){
 
     switch (action.type){
         case "FETCH_DESIGNS":
-            console.log("Getting designs!", action)
+            console.log("Getting designs!", action.payload)
             return action.payload;
 
         case "ADD_DESIGN":
-            console.log("Adding Design!", state, action.newDesign)
-            // const design = {designs: action.payload};
-            return state.concat([ action.newDesign ]);
+            console.log("Adding Design!", state, action.payload)
+            return [...state, action.payload]
 
-        // case "DELETE_DESIGN":
-        //     console.log("Deleting Design",  action.payload);
-        //     return state.filter(design => design.id !== action.payload.id)
-            // return {...state, designs}
-
-        case "ADD_COMMENT":
-            console.log("Adding Comment!", action.payload);
-            return state
-
-        case "DELETE_COMMENT":
-            console.log("Deleting Comment", action.payload);
-            return state
+        case "DELETE_DESIGN":
+            console.log("Deleting Design", action.payload);
+            return state.filter(design => design.id !== action.payload)
 
         default:
             return state
@@ -47,30 +38,14 @@ function userReducer(state = defaultState.users, action){
             return action.payload;
 
         case "ADD_USER":
-            console.log("adding User:", action)
+            console.log("adding User:", action.payload)
             return [...state, action.payload]
 
         case "DELETE_USER":
-            console.log("Deleting User:", action)
-            const users = state.filter(user => user.id !== action.id)
-            return [...state, users]
+            console.log("Deleting User:", action.payload)
+            // const users = state.filter(user => user.id !== action.id)
+            return state.filter(user => user.id !== action.payload)
 
-        case "DELETE_DESIGN":
-            console.log("Deleting Design", action.payload, action.designId);
-            let user = state.find(user => user.id === action.payload)
-            // .filter(user => user.designs.id !== action.payload.id)
-            let newdesigns = user.designs.filter(design => design.id !== action.designId)
-            return console.log(user, newdesigns)
-            // {
-            //     ...state,
-            //     user: {
-            //         ...state.user,
-            //         designs: [...state.user.designs, newdesigns]
-            //         }
-            //     }
-            
-            // return console.log(design)
-    
         case "EDIT_USER":
             console.log("Editing user!", action.payload)
             return state.map((user) => user.id === action.payload.id)
@@ -96,12 +71,33 @@ function userReducer(state = defaultState.users, action){
     }
 }
 
+function commentReducer(state = defaultState.comments, action){
+    switch(action.type){
+
+        case "FETCH_COMMENTS":
+            console.log("Getting Comments!", action.payload)
+            return action.payload;
+
+        case "ADD_COMMENT":
+            console.log("Adding Comment!", action.payload);
+            return [...state, action.payload]
+
+        case "DELETE_COMMENT":
+            console.log("Deleting Comment", action.payload);
+            return state.filter(comment => comment.id !== action.payload)
+
+        default:
+            return state
+    }
+}
+
 //reducer takes in an action
 //reducer also takes in a default state
 
 const rootReducer = combineReducers({
     designs: designReducer,
-    users: userReducer
+    users: userReducer,
+    comments: commentReducer,
 });
 
 export default rootReducer;

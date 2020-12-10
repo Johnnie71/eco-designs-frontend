@@ -7,9 +7,9 @@ import { deleteDesignAction } from '../redux/actions'
 class UserDesigns extends React.Component{
 
 
-    
+
     localDeleteHandler =(e)=>{
-        this.props.deleteHandler(this.props.user.id, this.props.design.id)
+        this.props.deleteHandler(this.props.design.id)
     }
 
 
@@ -31,7 +31,7 @@ class UserDesigns extends React.Component{
 }
 
 function mapDispatchToProps(dispatch){
-    return { deleteHandler: (userId, designId) => dispatch(deleteDesignAction(userId, designId)) }
+    return { deleteHandler: (designId) => dispatch(deleteDesignAction(designId)) }
 }
 
 export default connect(null, mapDispatchToProps)(UserDesigns)
