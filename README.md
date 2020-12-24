@@ -32,3 +32,5 @@ My main profile page "Johnnie Gonzalez" has all of my designs that I completed f
 Stretch Goals
 
 The next version will include authorization for log in and out. Would also like to implement other features such as live direct messaging, pop-up notifications, Active Storage, viewing a list of followed and followers, and a mobile app using React Native. All would be nice to implement but due to time constraints given for the project only a few original stretch goals were completed. Upgrades comming soon! :)
+
+CAPSTONE Project as a Flatiron School Student
