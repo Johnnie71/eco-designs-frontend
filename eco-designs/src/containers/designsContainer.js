@@ -20,7 +20,7 @@ class DesignsContainer extends React.Component {
      filteredFollows = () =>{
          /// filters out the follow relationships in state according to the user of 39
          let filteredfollow = this.props.follows.filter(follow => follow.following_id === 39)
-         //gets all the ids of everyone 32 follows puts them in an array
+         //gets all the ids of everyone 39 follows puts them in an array
          return filteredfollow.map(follow => follow.followed_id)
      }
 
