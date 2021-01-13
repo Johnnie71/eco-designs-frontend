@@ -117,16 +117,16 @@ class UserShow extends React.Component{
                     null
                 }
                  </div>
-                    {this.props.user.id === 39 ? 
+                    {/* {this.props.user.id === 39 ?  */}
                         <div>
                             {this.state.clicked ? <button className="glow-on-hover-edit" onClick={this.clickHandler}>Done</button> : <button className="glow-on-hover-edit" onClick={this.clickHandler}>Edit Profile</button>}
                             
                             {this.state.clicked ? <EditProfile user={this.props.user} /> : null }
                             
                          </div>
-                        :
-                    null
-                    } 
+                        {/* : */}
+                    {/* null
+                    }  */}
                 
                     <h1 className="myDesignsHeader">My Designs</h1>
                     <div className="module-border-wrap">
