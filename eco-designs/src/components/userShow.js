@@ -25,6 +25,7 @@ class UserShow extends React.Component{
         //filters out the designs from backend by the user ID of the current user show page
         let userdesigns = this.props.designs.filter(design => design.user.id === this.props.user.id)
         // console.log(userdesigns)
+        console.log(this.props.designs)
         return userdesigns.map(design => <UserDesigns key={design.id} design={design} user={this.props.user} deleteButtonClicked={this.state.deleteButtonClicked} />)
     
     }
@@ -49,8 +50,8 @@ class UserShow extends React.Component{
     
     doesUserFollow = () => {
         let filteredFollows = this.props.follows.filter(follow => follow.followed_id === this.props.user.id)
-        //checks to see if the selected user profile is followed by user with id of 32..returns true or false
-        return filteredFollows.map(follow => follow.following_id).includes(32)
+        //checks to see if the selected user profile is followed by user with id of 38..returns true or false
+        return filteredFollows.map(follow => follow.following_id).includes(39)
         // console.log(this.state.followedBy)
     }
 
@@ -70,7 +71,7 @@ class UserShow extends React.Component{
     }
 
     localDeleteFollow = () => {
-        let followId = this.props.follows.filter(follow => follow.following_id === 32 && follow.followed_id === this.props.user.id)[0].id
+        let followId = this.props.follows.filter(follow => follow.following_id === 39 && follow.followed_id === this.props.user.id)[0].id
 
         // console.log(followingId, followedId)
        
@@ -108,7 +109,7 @@ class UserShow extends React.Component{
                         <h4>FOLLOWERS</h4>
                             <h4>{this.followers().length}</h4>
                     </div>
-                    {this.props.user.id !== 32 ? 
+                    {this.props.user.id !== 39 ? 
                         <div className="followButtonDiv">
                             {this.doesUserFollow() ? <button className="unfollowButton" onClick={this.localDeleteFollow}>Unfollow</button> : <button className="followButton"  onClick={this.addFollower}>Follow</button>} 
                         </div>
@@ -116,7 +117,7 @@ class UserShow extends React.Component{
                     null
                 }
                  </div>
-                    {this.props.user.id === 32 ? 
+                    {this.props.user.id === 39 ? 
                         <div>
                             {this.state.clicked ? <button className="glow-on-hover-edit" onClick={this.clickHandler}>Done</button> : <button className="glow-on-hover-edit" onClick={this.clickHandler}>Edit Profile</button>}
                             
@@ -133,7 +134,7 @@ class UserShow extends React.Component{
                             {this.userDesigns()}
                         </div>
                     </div>
-                    {this.props.user.id === 32 ? 
+                    {this.props.user.id === 39 ? 
                     <div>
                         {this.state.deleteButtonClicked ? <button className="glow-on-hover-delete" onClick={this.showDelete}>Done</button> : <button className="glow-on-hover-delete" onClick={this.showDelete}>Delete Designs</button> }
                         {this.state.designClicked ? <button className="glow-on-hover" onClick={this.designClickHandler}>Done</button> : <button className="glow-on-hover" onClick={this.designClickHandler}>Add Design</button>}

@@ -20,7 +20,7 @@ class CommentCard extends React.Component{
                 </NavLink>
                 <h4 className="comment">{this.props.comment.comment}</h4>
             </div>
-                {this.props.comment.user.id === 32 ? <button className="glow-on-hover-deleteCommentButton" onClick={this.localDeleteHandler}>Delete</button> : null }
+                {this.props.comment.user.id === 39 ? <button className="glow-on-hover-deleteCommentButton" onClick={this.localDeleteHandler}>Delete</button> : null }
             </>
         )
     }

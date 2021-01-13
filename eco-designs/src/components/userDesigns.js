@@ -8,8 +8,9 @@ class UserDesigns extends React.Component{
 
 
 
-    localDeleteHandler =(e)=>{
+    localDeleteHandler = (e) =>{
         this.props.deleteHandler(this.props.design.id)
+        // console.log(this.props.design.id)
     }
 
 
@@ -29,7 +30,7 @@ class UserDesigns extends React.Component{
                         :
                         null
                      }
-                    {/* {this.props.design.user.id === 32 ? <button className="glow-on-hover-x" onClick={this.localDeleteHandler}>X</button> : null} */}
+                    {/* {this.props.design.user.id === 39 ? <button className="glow-on-hover-x" onClick={this.localDeleteHandler}>X</button> : null} */}
                     {/* <button className="glow-on-hover-x"  onClick={this.localDeleteHandler}>X</button> */}
             </div>
         )
