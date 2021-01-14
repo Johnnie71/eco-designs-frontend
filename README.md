@@ -27,7 +27,7 @@ I used vanilla CSS for icons, buttons, styling and forms.
 
 Profile header background was imported from an image found on Google.
 Others images uploaded from other images found on Google.
-My main profile page "Johnnie Gonzalez" has all of my designs that I completed for my Architectural Portfolio. 
+My main profile page "Johnnie71" has all of my designs that I completed for my Architectural Portfolio. 
 
 ## Stretch Goals
 
